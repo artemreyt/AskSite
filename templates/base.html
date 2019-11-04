@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		{% block title %} <title> Base Page </title> {% endblock %}
+	</head>
+
+	<body>
+		<div class="container-fluid">
+
+			{% block navbar %}
+				<nav class="navbar navbar-dark bg-dark" style="margin-bottom: 15px">
+					<a class="navbar-brand" href="{% url 'index' %}">StarAsk</a>
+					
+
+					<form class="form-inline my-2 my-lg-0">
+							<input class="form-control mr-sm-2" type="text" placeholder="Найти" aria-label="Search" size="50px">
+					</form>
+				
+					{% block button_new_question %}
+					<form action="{% url 'ask' %}" method="GET">
+						<button class="btn  btn-success" type="submit">Новый вопрос</button>
+					</form>
+					{% endblock %}
+
+					<div class="navbar-text"> User information sign in | sign up</div>
+				</nav>
+			{% endblock %}
+
+			{% block content %}
+			{% endblock %}
+		</div>
+
+		{% block footer %}
+		<footer class="bd-footer text-muted" style="">
+		  <div class="container-fluid p-3 p-md-3">
+			<p>StarAsk by <a href="https://vk.com/yratemka">Artem Starshov</a>.</p>
+		  </div>
+		</footer>
+		{% endblock %}
+	</body>
+
+</html>

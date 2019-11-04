@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>StarAsk</title>
+{% endblock %}
+
+{% block content %}
+    {% for q in questions %}
+    <div class="card mb-3 w-75">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+            {% if q.photo %}
+            <img src="{{ q.photo.url }}" class="card-img" alt="Here should be a photo">
+            {% else %}
+            <img src="" class="card-img" alt="No photo">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{q.title}}</h5>
+            <p class="card-text">{{q.text}}</p>
+            <p class="card-text"><small class="text-muted">{{ q.datetime_published }}</small> Tags: Django, Machine learning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <nav aria-label="">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
+      </ul>
+    </nav>
+{% endblock %}
