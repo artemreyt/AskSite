@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="{% url 'ask' %}" method="POST">
-        {% csrf_token %}
+<!--    <form action="{% url 'ask' %}" method="POST">-->
+<!--        {% csrf_token %}-->
 <!--      <div class="form-group">-->
 <!--          <label>Название</label>-->
-<!--        <input type="text" class="form-control" name="title" placeholder="Название">-->
+<!--        <input type="text" class="form-control" name="title" required placeholder="hello">-->
 <!--      </div>-->
 <!--        <div class="form-group">-->
 <!--            <label>Вставьте фотографию</label>-->
@@ -13,7 +13,7 @@
 <!--        </div>-->
 <!--      <div class="form-group">-->
 <!--        <label>Текст вопроса</label>-->
-<!--        <textarea class="form-control" name="text" rows="3"></textarea>-->
+<!--        <textarea class="form-control" name="text" rows="3"  placeholder="{{ form.title }}" required></textarea>-->
 <!--      </div>-->
          {{ form.as_p }}
         <button class="btn  btn-success" type="submit">Спросить</button>

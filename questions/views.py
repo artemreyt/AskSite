@@ -17,8 +17,9 @@ def ask(request):
     print(request.POST)
 
     if request.method == 'POST':
-        form = QuestionForm(request.POST, request.FILES)
+        # form = QuestionForm(request.POST, request.FILES)
 
+        form = Question()
         if form.is_valid():
             question = form.save()
             # question.author = request.user
