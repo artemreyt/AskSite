@@ -15,7 +15,24 @@
 <!--        <label>Текст вопроса</label>-->
 <!--        <textarea class="form-control" name="text" rows="3"  placeholder="{{ form.title }}" required></textarea>-->
 <!--      </div>-->
-         {{ form.as_p }}
-        <button class="btn  btn-success" type="submit">Спросить</button>
+         <!-- {{ form.as_p }} -->
+
+    {% for e in form.non_field_errors %}
+        <div class='alert alert-danger'>{{ e }}</div>
+    {% endfor %}
+    <form class="form-horizontal" action="{% url 'ask' %}" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+                <div class="form-group {% if field.errors %} has-error {% endif %}">
+                    <label class="control-label"> {{ field.label }}</label>
+                    <div class="controls">{{ field }}</div>
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+        </fieldset>
+        <div class="form-actions">
+            <button class="btn  btn-primary" type="submit">Спросить</button>
+        </div>
     </form>
 {% endblock %}
