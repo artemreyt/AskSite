@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if question.photo %}
+    <img src='{{question.photo.url}}' width='500'>
+    {% else %}
+        No photo ascociated with this question
+    {% endif %}
+{% endblock %}

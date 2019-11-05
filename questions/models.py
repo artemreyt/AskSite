@@ -33,7 +33,7 @@ class Question(models.Model):
     is_published = models.BooleanField('Опубликована', default=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, default=Author.objects.get(id=1))
     photo = models.ImageField(blank=True, upload_to='question_photo', default='baran.jpg')
-    # tags = models.ManyToManyField(to='Tag')
+    #tags = models.ManyToManyField(to='Tag', blank=True, default=None)
 
     def __str__(self):
         return self.title
@@ -48,7 +48,9 @@ class Question(models.Model):
 class Answer(models.Model):
     answer_author = models.CharField('Автор ответа', max_length=50)
     answer_text = models.TextField('Текст ответа')
-    pub_date = models.DateTimeField('Дата публикации', default=datetime.now())
+    pub_date = models.DateTimeField('Дата публикации', default=timezone.now)
+    # question = models.ForeignKey(Question, on_delete=models.CASCADE, default=None)
+
 
 
 class Tag(models.Model):

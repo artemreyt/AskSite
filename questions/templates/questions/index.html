@@ -5,26 +5,40 @@
 {% endblock %}
 
 {% block content %}
-    {% for q in questions %}
-    <div class="card mb-3 w-75">
+<!-- Custom styles for this template -->
+    <div class="container-fluid">
       <div class="row no-gutters">
-        <div class="col-md-4">
-            {% if q.photo %}
-            <img src="{{ q.photo.url }}" class="card-img" alt="Here should be a photo">
-            {% else %}
-            <img src="" class="card-img" alt="No photo">
-            {% endif %}
+        <div class="col-md-8 blog-main">
+          {% for q in questions %}
+          <p>
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                    {% if q.photo %}
+                    <img src="{{ q.photo.url }}" class="card-img" alt="Here should be a photo">
+                    {% else %}
+                    <img src="" class="card-img" alt="No photo">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{q.title}}</h5>
+                    <p class="card-text">{{q.text}}</p>
+                    <p class="card-text"><small class="text-muted">{{ q.datetime_published }}</small> Tags: Django, Machine learning</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </p>
+          {% endfor %}
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{q.title}}</h5>
-            <p class="card-text">{{q.text}}</p>
-            <p class="card-text"><small class="text-muted">{{ q.datetime_published }}</small> Tags: Django, Machine learning</p>
+          <div class="col-md-2 col-md-offset-1 blog-sidebar">
+              <div class="col-md-3">
+                Tags
+              </div>
           </div>
-        </div>
       </div>
     </div>
-    {% endfor %}
     <nav aria-label="">
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>

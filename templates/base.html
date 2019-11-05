@@ -28,7 +28,7 @@
 					</form>
 					{% endblock %}
 
-					<div class="navbar-text"> User information sign in | sign up</div>
+					<div class="navbar-text"> User information <a href="{% url 'login' %}">log in</a></div>
 				</nav>
 			{% endblock %}
 
@@ -37,12 +37,14 @@
 		</div>
 
 		{% block footer %}
-		<footer class="bd-footer text-muted" style="">
+		<footer class="bd-footer text-muted">
 		  <div class="container-fluid p-3 p-md-3">
 			<p>StarAsk by <a href="https://vk.com/yratemka">Artem Starshov</a>.</p>
 		  </div>
 		</footer>
+		
 		{% endblock %}
+		
 	</body>
 
 </html>

@@ -11,8 +11,8 @@ from .models import Question
 #         fields = ['title', 'text', 'photo']
 
 class AskForm(forms.Form):
-    title = forms.CharField(label='Название:', max_length=255)
-    text = forms.CharField(label="Описание:", widget=forms.Textarea)
+    title = forms.CharField(label='Название:', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    text = forms.CharField(label="Описание:", widget=forms.Textarea(attrs={'class': 'form-control'}))
     photo = forms.ImageField(label="Вставьте фотографию:", required=False)
 
     def clean(self):
