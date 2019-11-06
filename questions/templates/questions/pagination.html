@@ -1,0 +1,18 @@
+<nav aria-label="">
+        <ul class="pagination">
+            {% if questions.has_previous %}
+                <li class="page-item"><a class="page-link" href="/?page=1">&laquo; В начало</a></li>
+                {% if questions.previous_page_number is not 1%}
+                <li class="page-item"><a class="page-link" href="/?page={{questions.previous_page_number}}">{{questions.previous_page_number}}</a></li>
+                {% endif %}
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="#"><b>{{ questions.number }}</b></a></li>
+            
+            {% if questions.has_next %}
+            <li class="page-item"><a class="page-link" href="/?page={{questions.next_page_number}}">{{questions.next_page_number}}</a></li>
+                {% if questions.next_page_number < questions.paginator.num_pages %}
+                <li class="page-item"><a class="page-link" href="?page={{ questions.paginator.num_pages }}">{{questions.paginator.num_pages }} &raquo;</a></li>
+                {% endif %}
+            {% endif %}
+        </ul>
+</nav>
