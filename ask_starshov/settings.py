@@ -25,7 +25,7 @@ SECRET_KEY = '_n09lreedlju31kxo!=l8$nbaz^tu!k*z@p%fpsgfl@00wxl0v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ '*' ]
 
 
 # Application definition
@@ -122,20 +122,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/huy/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ask_starshov/media')
 
-DEFAULT_QUESTION_IMAGE = os.path.join(MEDIA_URL, 'baran.jpg')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'ask_starshov/static')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'questions/static')
+    os.path.join(BASE_DIR, 'ask_starshov/static'),
 ]
+
+DEFAULT_QUESTION_IMAGE = os.path.join(MEDIA_URL, 'baran.jpg')
+
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.static'
 )
