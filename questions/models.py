@@ -22,14 +22,14 @@ class QuestionManager(models.Manager):
     def published(self):
         return self.filter(
             is_published=True,
-            datetime_published__lt=datetime.now()
+            datetime_published__lt=timezone.now()
         )
 
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField('Текст вопроса')
-    datetime_published = models.DateTimeField(auto_now_add=True)
+    datetime_published = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField('Опубликована', default=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, default=Author.objects.get(id=1))
     photo = models.ImageField(blank=True, upload_to='question_photo', default='baran.jpg')

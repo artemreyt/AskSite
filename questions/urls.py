@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
@@ -6,5 +7,5 @@ urlpatterns = [
     path('new_question', views.new_question, name='new_question'),
     path('ask', views.ask, name='ask'),
     path('question/<int:id>', views.question, name='question'),
-    path('login', views.login, name='login')
+    url(r'login/', views.login, name='login')
 ]

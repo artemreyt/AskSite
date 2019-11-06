@@ -4,9 +4,13 @@ from .forms import AskForm
 from django.conf import settings
 import os.path
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+
 
 def index(request):
-    questions = models.Question.objects.published().order_by('datetime_published')
+    questions_list = models.Question.objects.published().order_by('datetime_published')
+    questions = paginate(questions_list, request)
 
     return render(request, 'questions/index.html', {
         'questions': questions
@@ -15,17 +19,15 @@ def index(request):
 def new_question(request):
     return render(request, 'questions/new_question.html')
 
-
+@login_required(login_url='/login')
 def ask(request):
-    print(request.POST)
-
     if request.method == 'POST':
         form = AskForm(request.POST, request.FILES)
 
         if form.is_valid():
             question = form.save()
             # print(request.POST, request.FILES)
-            upload_image_for_question(request.FILES['photo'])
+            # upload_image_for_question(request.FILES['photo'])
             # question.author = request.user
             # url = question.get_url()
             return success(request)
@@ -52,8 +54,7 @@ def login(request):
     return render(request, 'questions/login.html')
 
 def paginate(objects_list, request):
-    paginator = Paginator(objects_list, 3) 
-
-    page = request.GET.get('page')
-    objects = paginator.get_page(page)
-    return objects_page, paginator
+    page = request.GET.get('page') or 1
+    paginator = Paginator(objects_list, 4)
+    objects_page = paginator.get_page(page)
+    return objects_page

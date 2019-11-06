@@ -28,7 +28,15 @@
 					</form>
 					{% endblock %}
 
-					<div class="navbar-text"> User information <a href="{% url 'login' %}">log in</a></div>
+					<div class="navbar-text"> 
+						{% if user.is_authenticated %}
+							{{user}} / <a href="#">Выйти</a>
+						{% else %}
+							<a href="{% url 'login' %}">Вход</a>
+							/
+							<a href="#">Регистрация</a>
+						{% endif %}
+					</div>
 				</nav>
 			{% endblock %}
 
