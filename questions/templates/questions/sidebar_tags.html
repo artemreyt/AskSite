@@ -1,13 +1,8 @@
 <div class="p-4 mb-3 bg-light">
     <h4 class="font-italic">Popular tags</h4>
-    <a class="post-tag" href="#">python</a>
-    <a class="post-tag" href="#">machine learning</a>
-    <a class="post-tag" href="#">machine learning</a>
-    <a class="post-tag" href="#">machine learning</a>
-    <a class="post-tag" href="#">machine learning</a>
-    <a class="post-tag" href="#">machine learning</a>
-    <a class="post-tag" href="#">c</a>
-    <a class="post-tag" href="#">c++</a>
+    {% for tag in tags %}
+    <a class="post-tag" href="#">{{tag.tag_name}}</a>
+    {% endfor %}
     <h4 class="font-italic">Elsewhere</h4>
     <ol class="list-unstyled">
         <li><a href="#">GitHub</a></li>

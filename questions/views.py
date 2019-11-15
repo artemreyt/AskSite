@@ -11,9 +11,10 @@ from django.core.paginator import Paginator
 def index(request):
     questions_list = models.Question.objects.published().order_by('datetime_published')
     questions = paginate(questions_list, request)
-
+    tags = models.Tag.objects.all()
     return render(request, 'questions/index.html', {
-        'questions': questions
+        'questions': questions,
+        'tags': tags
     })
 
 def new_question(request):
