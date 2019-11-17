@@ -40,18 +40,27 @@
 					</div>
 				</nav>
 			{% endblock %}
-
-			{% block content %}
-			{% endblock %}
 		</div>
 
+		<div class="container-fluid">
+			<div class="row no-gutters">
+				<div class="col-md-7">
+					{% block content %}
+					{% endblock %}
+				</div>
+				<div class="col-md-3 offset-md-1 blog-sidebar">
+						{% include 'questions/sidebar_tags.html' %}
+				</div>
+			</div>
+		</div>
+
+
 		{% block footer %}
-		<footer class="bd-footer text-muted">
+		<footer class="footer text-muted">
 		  <div class="container-fluid p-3 p-md-3">
 			<p>StarAsk by <a href="https://vk.com/yratemka">Artem Starshov</a>.</p>
 		  </div>
-		</footer>
-		
+		</footer>	
 		{% endblock %}
 		
 	</body>

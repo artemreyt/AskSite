@@ -5,20 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<!-- Custom styles for this template -->
-    <div class="container-fluid">
-      <div class="row no-gutters">
-        <div class="col-md-7 blog-main">
           {% for q in questions %}
           <p>
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                    {% if q.photo %}
-                    <img src="{{ q.photo.url }}" class="card-img" alt="Here should be a photo">
-                    {% else %}
-                    <img src="" class="card-img" alt="No photo">
-                    {% endif %}
+                    <img src="#" class="card-img" alt="Here should be a photo">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -38,11 +30,5 @@
             </div>
         </p>
           {% endfor %}
-        </div>
-        <div class="col-md-3 offset-md-1 blog-sidebar">
-          {% include 'questions/sidebar_tags.html' %}
-        </div>
-        </div>
         {% include 'questions/pagination.html' %}
-    </div>
 {% endblock %}
